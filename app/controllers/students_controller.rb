@@ -9,8 +9,11 @@ class StudentsController < ApplicationController
   end
 
   def activate
+    
     set_student
     @student.activate
+    @student.save
+    redirect_to student_path(@student)
   end
 
   private
