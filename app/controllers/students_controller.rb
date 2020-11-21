@@ -6,6 +6,7 @@ class StudentsController < ApplicationController
   end
 
   def show
+    set_student
   end
 
   def activate
@@ -15,9 +16,12 @@ class StudentsController < ApplicationController
     else 
       @student.active = false
     end
+    # @student.active = !@student.active
+
     @student.save
 
-    redirect_to "/students/#{@student.id}"
+    redirect_to student_path(@student)
+    # redirect_to "/students/#{@student.id}"
   end 
 
   private
